@@ -1,13 +1,22 @@
 from interbotix_xs_modules.arm import InterbotixManipulatorXS
 import math
+import numpy as np
 
 bot = InterbotixManipulatorXS("vx300s", "arm", "gripper")
 xo =0
 yo=0
+
 try:
     while True:
-        x= input("Enter X coordinate")
-        y = input("Enter Y coordinate")
+
+        load_file = open("coordinates.txt", "r")
+        raw = load_file.readlines()
+        data = [line.strip() for line in raw]
+        load_file.close()
+        print (data)
+        x = float(data[0])
+        y= float(data[1])
+
         yin = math.atan(y/x)+0.025
         xin = math.sqrt((x**2)+ (y**2))-0.05
         yin = yin - yo

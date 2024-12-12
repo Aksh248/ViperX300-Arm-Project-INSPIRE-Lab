@@ -1,43 +1,27 @@
-# client.py
-from imutils.video import VideoStream
+import cv2
 import imagezmq
 import socket
-import time
-import imutils
-import cv2
-# construct the argument parser and parse the arguments
+sender = imagezmq.ImageSender(connect_to='tcp://172.24.16.118:5555')
 
-
-# initialize the ImageSender object with the socket address of the
-# server
-sender = imagezmq.ImageSender(connect_to="tcp://localhost:5555")
-
-# allow the camera sensor to warm up
-time.sleep(2.0)
-
-# start the video stream thread
-print("[INFO] starting video stream...")
-vs = VideoStream(src=0).start()
-time.sleep(2.0)
-
-# loop over frames from the video stream
+# Initialize the camera or video capture device
+camera = cv2.VideoCapture(0)  # Change the argument to the appropriate device index or file path
+device = socket.gethostname()
+print(device)
 while True:
-    # grab the frame from the threaded video stream and resize it
-    # to have a maximum width of 400 pixels
-    frame = vs.read()
-
-    # send the frame to the server
-    sender.send_image(socket.gethostname(), frame)
-
-    # show the output frame
+    ret, frame = camera.read()
+    if not ret:
+        print("Failed to capture frame from camera.")
+        break
+    
+    # Send the frame to the server
+    #print("sending image")
+    sender.send_image(device,frame)
+    #print("Image sent")
+    # Optionally display the frame (client-side)
     cv2.imshow("Frame", frame)
-    key = cv2.waitKey(1) & 0xFF
-
-    # if the `q` key was pressed, break from the loop
-    if key == ord("q"):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# do a bit of cleanup
+camera.release()
 cv2.destroyAllWindows()
-vs.stop()
-	
+
