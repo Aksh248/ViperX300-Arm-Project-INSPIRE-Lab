@@ -11,5 +11,7 @@ This is a GitHub repository of all the projects done on the ViperX300 6DOF robot
 
 Each individual directory also contains a report and README file with the details regarding the files in those directories
 The link to a notion page of some useful links related to this project: https://www.notion.so/Robotic-Small-Object-Detection-and-Pickup-4a598fd4e8ed4865accec02705514757#6ea52d9b9b4e460ea328c86f5d3781ee
+
 Some photos and videos of the setup and the arm in use : https://drive.google.com/drive/folders/1KZeqEFTqVhF6CnXkjg2pGaPO3XF69ceN?usp=sharing
+
 If there is ever any issue with this project feel free to contact me directly at: akshaya.venugopal248@gmail.com
