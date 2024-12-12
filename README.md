@@ -3,3 +3,5 @@
 This is a GitHub repository of all the projects done on the ViperX300 6DOF robotic Arm of the INSPIRE Lab of BITS Pilani by Akshaya Venugopal during the period of 2023-2024.
 
 The link to a notion page of some useful links related to this project: https://www.notion.so/Robotic-Small-Object-Detection-and-Pickup-4a598fd4e8ed4865accec02705514757#6ea52d9b9b4e460ea328c86f5d3781ee
+
+If there is ever any issue with this project feel free to contact me directly at: akshaya.venugopal248@gmail.com
